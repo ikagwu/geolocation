@@ -12,6 +12,7 @@ pipeline {
         }
          stage('upload artifact to nexus') {
             steps {
+                script{
                 nexusArtifactUploader artifacts:
                 [[artifactId: ' ${POM_ARTIFACTID}',
                  classifier: '', 
@@ -24,6 +25,7 @@ pipeline {
                     protocol: 'http',
                     repository: 'Biom',
                      version: '${POM_VERSION}'
+                }     
             }
 
         }
